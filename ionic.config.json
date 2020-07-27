@@ -1,0 +1,7 @@
+{
+  "name": "UTU_Understand-the-User",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
