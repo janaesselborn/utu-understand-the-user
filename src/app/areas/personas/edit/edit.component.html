@@ -1,0 +1,56 @@
+<ion-content>
+  <div class="custom-content">
+    <div class="main-content">
+      <form class="persona-creation-form">
+        <mat-form-field class="full-width">
+          <mat-label>Name</mat-label>
+          <label>
+            <input matInput [formControl]="personaNameFormControl"
+                   placeholder="Max Mustermann">
+          </label>
+          <mat-hint>Please enter the name of your persona.</mat-hint>
+          <mat-error *ngIf="personaNameFormControl.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+
+      <div class="technical-devices-container">
+        <h2>Technical devices used</h2>
+        <div
+                id="selectedTechnicalDevices"
+                cdkDropList
+                [cdkDropListData]="selectedTechnicalDevices"
+                cdkDropListConnectedTo="allTechnicalDevices"
+                class="technical-device-list"
+                (cdkDropListDropped)="drop($event)"
+                [cdkDropListEnterPredicate]="isTechnicalDevice">
+          <div
+                  class="example-box"
+                  *ngFor="let technicalDevice of selectedTechnicalDevices"
+                  cdkDrag
+                  [cdkDragData]="technicalDevice">{{technicalDevice?.name}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="technical-devices-container">
+        <h2>Technical Devices</h2>
+        <div
+                id="allTechnicalDevices"
+                cdkDropList
+                [cdkDropListData]="allTechnicalDevices"
+                cdkDropListConnectedTo="selectedTechnicalDevices"
+                class="technical-device-list"
+                (cdkDropListDropped)="drop($event)"
+                [cdkDropListEnterPredicate]="isTechnicalDevice">
+          <div
+                  class="example-box"
+                  *ngFor="let technicalDevice of allTechnicalDevices"
+                  [cdkDragData]="technicalDevice"
+                  cdkDrag>{{technicalDevice?.name}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

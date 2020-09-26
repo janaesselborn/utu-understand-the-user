@@ -1,0 +1,15 @@
+.custom-content {
+  padding: 2rem;
+
+  ion-title {
+    padding: 0;
+    color: var(--ion-color-dark-shade);
+    font-size: 1.75rem;
+  }
+
+  ion-icon {
+    color: var(--ion-color-primary);
+    min-width: 28px;
+    min-height: 28px;
+  }
+}
