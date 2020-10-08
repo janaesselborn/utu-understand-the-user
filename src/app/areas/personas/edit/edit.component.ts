@@ -9,12 +9,20 @@ import {TechnicalDevice} from '../technical-device';
   styleUrls: ['./edit.component.scss'],
 })
 export class EditComponent implements OnInit {
+    panelOpenState = false;
   personaNameFormControl = new FormControl('', [
     Validators.required
   ]);
 
-  allTechnicalDevices: TechnicalDevice[] = [new TechnicalDevice('Laptop'), new TechnicalDevice('Smartphone'), new TechnicalDevice('Smartwatch') ];
-  selectedTechnicalDevices = [new TechnicalDevice('PC')];
+  allTechnicalDevices: TechnicalDevice[] = [
+      new TechnicalDevice('Laptop', 'laptop-outline'),
+      new TechnicalDevice('Smartphone', 'phone-portrait-outline'),
+      new TechnicalDevice('Smartwatch', 'watch-outline')
+  ];
+
+  selectedTechnicalDevices = [
+      new TechnicalDevice('PC', 'desktop-outline')
+  ];
 
   drop(event: CdkDragDrop<TechnicalDevice[]>) {
     if (event.previousContainer === event.container) {
@@ -38,8 +46,9 @@ export class EditComponent implements OnInit {
   }
 
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
+
 
 }

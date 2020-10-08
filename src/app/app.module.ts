@@ -16,14 +16,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {IconCardComponent} from './areas/personas/edit/icon-card/icon-card.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {GeoDbFreeModule} from 'wft-geodb-angular-client';
+import {LocationFinderComponent} from './areas/personas/edit/location-finder/location-finder.component';
 
 @NgModule({
-  declarations: [
-      AppComponent,
-      PersonasComponent,
-      DetailComponent,
-      EditComponent
-  ],
+    declarations: [
+        AppComponent,
+        PersonasComponent,
+        DetailComponent,
+        EditComponent,
+        IconCardComponent,
+        LocationFinderComponent
+    ],
   entryComponents: [],
     imports: [
         BrowserModule,
@@ -34,7 +42,14 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
-        DragDropModule
+        DragDropModule,
+        MatGridListModule,
+        MatExpansionModule,
+        MatAutocompleteModule,
+        GeoDbFreeModule.forRoot({
+            apiKey: null,
+            serviceUri: 'http://geodb-free-service.wirefreethought.com'
+})
     ],
   providers: [
     StatusBar,

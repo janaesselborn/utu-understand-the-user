@@ -1,56 +1,73 @@
 <ion-content>
-  <div class="custom-content">
-    <div class="main-content">
-      <form class="persona-creation-form">
-        <mat-form-field class="full-width">
-          <mat-label>Name</mat-label>
-          <label>
-            <input matInput [formControl]="personaNameFormControl"
-                   placeholder="Max Mustermann">
-          </label>
-          <mat-hint>Please enter the name of your persona.</mat-hint>
-          <mat-error *ngIf="personaNameFormControl.hasError('required')">
-            Name is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </form>
+  <div class="grid-container ">
+    <section class="grid-item main">
+        <form class="persona-creation-form">
+          <mat-form-field class="full-width">
+            <mat-label>Name</mat-label>
+            <label>
+              <input matInput [formControl]="personaNameFormControl"
+                     placeholder="Max Mustermann">
+            </label>
+            <mat-hint>Please enter the name of your persona.</mat-hint>
+            <mat-error *ngIf="personaNameFormControl.hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+            <app-location-finder></app-location-finder>
+        </form>
+        <div class="technical-devices-container">
+          <h2 class="small-heading">Technical devices used</h2>
+          <div
+                  id="selectedTechnicalDevices"
+                  cdkDropList
+                  [cdkDropListData]="selectedTechnicalDevices"
+                  cdkDropListConnectedTo="allTechnicalDevices"
+                  class="technical-device-list"
+                  cdkDropListOrientation="horizontal"
+                  (cdkDropListDropped)="drop($event)"
+                  [cdkDropListEnterPredicate]="isTechnicalDevice">
+            <div
+                class="drag-and-drop-box"
+                *ngFor="let technicalDevice of selectedTechnicalDevices"
+                cdkDrag
+                [cdkDragData]="technicalDevice"
+                >
+                <app-icon-card [technicalDevice]="technicalDevice"></app-icon-card>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section class="grid-item sidebar">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="small-heading">
+                        Technical Devices
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="technical-devices-container">
+                    <div
+                            id="allTechnicalDevices"
+                            cdkDropList
+                            [cdkDropListData]="allTechnicalDevices"
+                            cdkDropListConnectedTo="selectedTechnicalDevices"
+                            class="technical-device-list"
+                            (cdkDropListDropped)="drop($event)"
+                            [cdkDropListEnterPredicate]="isTechnicalDevice">
+                        <div
+                                class="drag-and-drop-box"
+                                *ngFor="let technicalDevice of allTechnicalDevices"
+                                [cdkDragData]="technicalDevice"
+                                cdkDrag>
+                            <app-icon-card [technicalDevice]="technicalDevice"></app-icon-card>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
 
-      <div class="technical-devices-container">
-        <h2>Technical devices used</h2>
-        <div
-                id="selectedTechnicalDevices"
-                cdkDropList
-                [cdkDropListData]="selectedTechnicalDevices"
-                cdkDropListConnectedTo="allTechnicalDevices"
-                class="technical-device-list"
-                (cdkDropListDropped)="drop($event)"
-                [cdkDropListEnterPredicate]="isTechnicalDevice">
-          <div
-                  class="example-box"
-                  *ngFor="let technicalDevice of selectedTechnicalDevices"
-                  cdkDrag
-                  [cdkDragData]="technicalDevice">{{technicalDevice?.name}}</div>
-        </div>
-      </div>
+
+        </section>
     </div>
-    <div class="sidebar">
-      <div class="technical-devices-container">
-        <h2>Technical Devices</h2>
-        <div
-                id="allTechnicalDevices"
-                cdkDropList
-                [cdkDropListData]="allTechnicalDevices"
-                cdkDropListConnectedTo="selectedTechnicalDevices"
-                class="technical-device-list"
-                (cdkDropListDropped)="drop($event)"
-                [cdkDropListEnterPredicate]="isTechnicalDevice">
-          <div
-                  class="example-box"
-                  *ngFor="let technicalDevice of allTechnicalDevices"
-                  [cdkDragData]="technicalDevice"
-                  cdkDrag>{{technicalDevice?.name}}</div>
-        </div>
-      </div>
-    </div>
-  </div>
 </ion-content>
