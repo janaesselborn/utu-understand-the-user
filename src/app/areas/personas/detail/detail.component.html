@@ -1,6 +1,73 @@
 <ion-content>
-  <div class="custom-content">
-    <ion-title>Personas <ion-icon ios="information-circle-outline" md="information-circle-outline"></ion-icon></ion-title>
-    <a routerLink="/area/personas/edit">Test</a>
+  <div class="custom-content persona" *ngIf="persona$ | async as persona">
+    <div class="header-bar">
+      <div class="page-heading">
+        <ion-icon name="arrow-back-outline" class="go-back" (click)="goBack()"></ion-icon>
+        <h1>Persona <b>{{ persona?.name }}</b></h1>
+        <ion-icon routerLink="/area/personas/edit"  ios="create-outline" md="create-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="general-data">
+      <div class="image-wrapper">
+        <img [alt]="'Persona' + persona?.name" [src]="persona?.image">
+      </div>
+      <div class="quote" *ngIf="persona?.quote">"{{ persona?.quote }}"</div>
+      <div class="table-information">
+        <div *ngIf="persona?.age">
+          <span class="small-heading">Age</span>
+          <span>{{ persona?.age }} years</span>
+        </div>
+        <div *ngIf="persona?.location">
+          <span class="small-heading">Location</span>
+          <span>{{ persona?.location }}</span>
+        </div>
+        <div *ngIf="persona?.status">
+          <span class="small-heading">Status</span>
+          <span>{{ persona?.status }}</span>
+        </div>
+        <div *ngIf="persona?.jobrole">
+          <span class="small-heading">Jobrole</span>
+          <span>{{ persona?.jobrole }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="additional-data">
+      <div>
+        <div *ngIf="persona?.bio">
+          <span class="area-heading">Biography</span>
+          <p>{{ persona?.bio }}</p>
+        </div>
+        <div *ngIf="persona?.frustrations">
+          <span class="area-heading">Frustrations</span>
+          <p>{{ persona?.frustrations }}</p>
+        </div>
+        <div *ngIf="persona?.goals">
+          <span class="area-heading">Goals</span>
+          <p>{{ persona?.goals }}</p>
+        </div>
+      </div>
+      <div>
+        <div *ngIf="persona?.archetype">
+          <span class="area-heading">Archetype</span>
+          <p>{{ persona?.archetype }}</p>
+        </div>
+        <div *ngIf="persona?.technicalDevices">
+          <span class="area-heading">Technical Devices</span>
+          <p>{{ persona?.technicalDevices }}</p>
+        </div>
+        <div *ngIf="persona?.brands">
+          <span class="area-heading">Brands</span>
+          <p>{{ persona?.brands }}</p>
+        </div>
+        <div *ngIf="persona?.hobbiesInterest">
+          <span class="area-heading">Hobbies</span>
+          <p>{{ persona?.hobbiesInterest }}</p>
+        </div>
+        <div *ngIf="persona">
+          <span class="area-heading">Personality</span>
+          <p>{{ persona }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

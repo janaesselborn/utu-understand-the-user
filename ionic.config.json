@@ -1,7 +1,8 @@
 {
   "name": "UTU_Understand-the-User",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

@@ -3,14 +3,32 @@
 .grid-container {
   display: grid;
   grid-template: "main sidebar" auto;
+  grid-template-columns: 1fr 310px;
   height: 100%;
 
   .main {
     grid-area: main;
     padding: 1rem;
+    overflow-y: scroll;
+
+    .grid-container-basic-info, .grid-container-specific-infos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 20px;
+    }
 
     .full-width {
       width: 100%;
+    }
+
+    .form-field-name {
+      margin-bottom: 20px;
+
+      input {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--ion-color-secondary);
+      }
     }
   }
 
@@ -28,21 +46,22 @@
   }
 }
 
-.technical-devices-container {
-  width: 400px;
+.technical-devices-container, .brands-container {
+  width: 100%;
   max-width: 100%;
   margin: 0 25px 25px 0;
   display: inline-block;
   vertical-align: top;
 }
 
-.technical-device-list {
+.technical-device-list, .brands-list {
   border: dashed 2px #ccc;
   min-height: 60px;
   background: var(--ion-color-light-tint);
   border-radius: 4px;
   overflow: hidden;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .cdk-drag-preview {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Persona} from './persona';
+import {Persona} from '../../shared/persona';
+import {PersonaService} from '../../shared/persona.service';
 
 @Component({
   selector: 'app-personas',
@@ -7,16 +8,20 @@ import {Persona} from './persona';
   styleUrls: ['./personas.component.scss'],
 })
 export class PersonasComponent implements OnInit {
-  // Example Data
-  personaMS = new Persona('Marie Sommer', 'assets/images/persona_marie_sommer.jpg', 'UX Designerin');
-  personaBL = new Persona('Bärbel Lagermann', 'assets/images/persona_baerbel_lagermann.jpg', 'Logistikerin');
-  personaMB = new Persona('Matthias Berner', 'assets/images/persona_matthias_berner.jpg', 'Product Owner');
+  personas: Persona[] = [];
 
-  personas: Persona[] = [this.personaMS, this.personaBL, this.personaMB];
+  constructor(private personaService: PersonaService) {}
 
-  constructor() {}
-
-  ngOnInit() {}
-
+  ngOnInit() {
+    const personasRes = this.personaService.getPersonaList();
+    personasRes.snapshotChanges().subscribe(res => {
+      this.personas = [];
+      res.forEach(item => {
+        const a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.personas.push(a as Persona);
+      });
+    });
+  }
 }
 

@@ -61,6 +61,7 @@ ion-menu.ios ion-list#labels-list ion-list-header {
 
 ion-menu {
   --ion-background-color: var(--ion-color-light-tint);
+  max-width:200px;
 
   ion-item.is-active {
     --ion-background-color: var(--ion-color-primary);

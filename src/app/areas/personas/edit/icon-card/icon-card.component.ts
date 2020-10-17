@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TechnicalDevice} from '../../technical-device';
+import {DragAndDropIconItem} from '../../../../shared/drag-and-drop-icon-item';
 
 @Component({
   selector: 'app-icon-card',
@@ -7,7 +7,7 @@ import {TechnicalDevice} from '../../technical-device';
   styleUrls: ['./icon-card.component.scss'],
 })
 export class IconCardComponent implements OnInit {
-  @Input() technicalDevice: TechnicalDevice;
+  @Input() item: DragAndDropIconItem;
 
   constructor() { }
 

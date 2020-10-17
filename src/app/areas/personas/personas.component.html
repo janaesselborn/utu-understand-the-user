@@ -1,21 +1,17 @@
 <ion-content>
   <div class="custom-content">
-    <ion-title>Personas <ion-icon ios="information-circle-outline" md="information-circle-outline"></ion-icon></ion-title>
+    <div class="header-bar">
+      <div class="page-heading">
+        <h1>Personas</h1>
+        <ion-icon ios="information-circle-outline" md="information-circle-outline"></ion-icon>
+      </div>
+      <ion-button routerLink="/area/personas/edit" color="secondary" class="main-action-button" shape="round">Create Persona</ion-button>
+    </div>
+
     <ion-grid class="persona-list">
       <ion-row>
         <ion-col *ngFor="let persona of personas">
-          <div class="persona-card" routerLink="/area/personas/detail">
-            <div class="general-information">
-              <div class="image-wrapper">
-                <img [alt]="'Persona' + persona?.name" [src]="persona?.image">
-              </div>
-              <span class="name">{{ persona?.name }}</span>
-              <span class="jobrole">{{ persona?.jobrole }}</span>
-            </div>
-            <div class="additional-information">
-              Weitere Informationen folgen bald ...
-            </div>
-          </div>
+          <app-persona-card [persona]="persona"></app-persona-card>
         </ion-col>
       </ion-row>
     </ion-grid>

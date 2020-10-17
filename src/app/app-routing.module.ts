@@ -22,7 +22,7 @@ const routes: Routes = [
     component: PersonasComponent
   },
   {
-    path: 'area/personas/detail',
+    path: 'area/personas/details/:id/:name',
     component: DetailComponent
   },
   {

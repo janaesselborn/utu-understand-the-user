@@ -1,0 +1,24 @@
+<div class="persona-card persona" (click)="openDetailPersona()">
+  <div class="general-information">
+    <div class="image-wrapper">
+      <img [alt]="'Persona' + persona?.name" [src]="persona?.image">
+    </div>
+    <span class="name">{{ persona?.name }}</span>
+    <span class="jobrole">{{ persona?.jobrole }}</span>
+  </div>
+  <div class="additional-information table-information">
+    <p class="quote" *ngIf="persona?.quote">"{{ persona?.quote }}"</p>
+    <div *ngIf="persona?.age">
+      <span class="small-heading">Age</span>
+      <span>{{ persona?.age }} years</span>
+    </div>
+    <div *ngIf="persona?.location">
+      <span class="small-heading">Location</span>
+      <span>{{ persona?.location }}</span>
+    </div>
+    <div *ngIf="persona?.status">
+      <span class="small-heading">Status</span>
+      <span>{{ persona?.status }}</span>
+    </div>
+  </div>
+</div>

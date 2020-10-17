@@ -1,7 +1,7 @@
-import { TechnicalDevice } from './technical-device';
+import { DragAndDropIconItem } from '../../shared/drag-and-drop-icon-item';
 
 describe('TechnicalDevice', () => {
   it('should create an instance', () => {
-    expect(new TechnicalDevice()).toBeTruthy();
+    expect(new DragAndDropIconItem()).toBeTruthy();
   });
 });

@@ -1,0 +1,42 @@
+@import "src/theme/variables";
+
+.persona-card {
+  border-radius: 0.25rem;
+  background-color: var(--ion-color-primaray-40);
+  display: block;
+  margin-top: 75px;
+  padding-top: 40px;
+
+  &:hover {
+    box-shadow: 4px 4px var(--ion-color-primary);
+    cursor: pointer;
+  }
+
+  .general-information {
+    padding: 32px;
+
+    .image-wrapper {
+      position: absolute;
+    }
+
+    .name, .jobrole {
+      display: block;
+    }
+
+    .name {
+      margin-bottom: 4px;
+      margin-top: 12px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .jobrole {
+      font-size: 16px;
+      color: var(--ion-color-gray-1);
+    }
+  }
+  .additional-information {
+    background-color: var(--ion-color-primary-contrast);
+    padding: 32px;
+  }
+}

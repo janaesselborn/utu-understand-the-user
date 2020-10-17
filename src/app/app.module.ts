@@ -22,6 +22,19 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {GeoDbFreeModule} from 'wft-geodb-angular-client';
 import {LocationFinderComponent} from './areas/personas/edit/location-finder/location-finder.component';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSelectModule} from '@angular/material/select';
+import {SliderWithTextOnSideComponent} from './areas/personas/edit/slider-with-text-on-side/slider-with-text-on-side.component';
+import {PersonaCardComponent} from './areas/personas/persona-card/persona-card.component';
+
+// environment
+import { environment } from '../environments/environment';
+
+// Firebase
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 @NgModule({
     declarations: [
@@ -30,7 +43,9 @@ import {LocationFinderComponent} from './areas/personas/edit/location-finder/loc
         DetailComponent,
         EditComponent,
         IconCardComponent,
-        LocationFinderComponent
+        LocationFinderComponent,
+        SliderWithTextOnSideComponent,
+        PersonaCardComponent
     ],
   entryComponents: [],
     imports: [
@@ -49,7 +64,13 @@ import {LocationFinderComponent} from './areas/personas/edit/location-finder/loc
         GeoDbFreeModule.forRoot({
             apiKey: null,
             serviceUri: 'http://geodb-free-service.wirefreethought.com'
-})
+        }),
+        MatSliderModule,
+        MatSelectModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,
+        AngularFireDatabaseModule,
+        AngularFireStorageModule
     ],
   providers: [
     StatusBar,

@@ -11,7 +11,6 @@
                                                    [value]="p.title">{{ p.title }}</ion-select-option>
                             </ion-select>
                         </ion-item>
-                        <ion-button color="secondary" class="main-action-button" expand="block" shape="round">Create</ion-button>
                         <ion-list id="project-specific-list">
                             <ion-item *ngFor="let p of appPages" [routerLink]="p.url" detail="false" lines="none" routerLinkActive="is-active">
                                 <ion-icon [ios]="p.icon" [md]="p.icon" slot="start"></ion-icon>
