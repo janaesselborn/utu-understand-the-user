@@ -86,9 +86,15 @@ ion-img.logo {
   flex-direction: column;
 
   .sidebar-top-wrapper {
-    .project-selection {
-      margin-bottom: 60px;
+    .project-selection-wrapper {
+      margin: 8px;
+
+      .project-selection {
+        margin-bottom: 60px;
+        width: 100%;
+      }
     }
+
     .main-action-button {
       min-height: 60px;
       margin-bottom: 2rem;

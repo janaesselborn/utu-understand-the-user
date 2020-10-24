@@ -35,6 +35,11 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {PersonalityRangeComponent} from './areas/personas/detail/personality-range/personality-range.component';
+import {ProfileComponent} from './profile/profile.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
     declarations: [
@@ -45,7 +50,9 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
         IconCardComponent,
         LocationFinderComponent,
         SliderWithTextOnSideComponent,
-        PersonaCardComponent
+        PersonaCardComponent,
+        PersonalityRangeComponent,
+        ProfileComponent
     ],
   entryComponents: [],
     imports: [
@@ -70,7 +77,10 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
-        AngularFireStorageModule
+        AngularFireStorageModule,
+        MatProgressBarModule,
+        MatTabsModule,
+        MatListModule
     ],
   providers: [
     StatusBar,

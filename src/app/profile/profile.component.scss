@@ -1,0 +1,42 @@
+@import "src/theme/variables";
+.custom-content {
+  height: 100%;
+  padding: 0;
+
+  .user-information {
+    padding: 20px 20px 60px 20px;
+    background: var(--ion-color-primary);
+    height: 40%;
+    min-height: 375px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+
+    .image-wrapper {
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+  }
+
+  mat-tab-group {
+    .tab-inner-wrapper {
+      padding: 20px;
+
+      mat-form-field {
+        width: 100%;
+        max-width: 450px;
+      }
+    }
+  }
+}
+

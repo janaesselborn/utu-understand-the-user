@@ -8,10 +8,12 @@
       </div>
     </div>
     <div class="general-data">
-      <div class="image-wrapper">
-        <img [alt]="'Persona' + persona?.name" [src]="persona?.image">
+      <div class="image-quote-wrapper">
+        <div class="image-wrapper">
+          <img [alt]="'Persona' + persona?.name" [src]="persona?.image">
+        </div>
+        <div class="quote" *ngIf="persona?.quote">"{{ persona?.quote }}"</div>
       </div>
-      <div class="quote" *ngIf="persona?.quote">"{{ persona?.quote }}"</div>
       <div class="table-information">
         <div *ngIf="persona?.age">
           <span class="small-heading">Age</span>
@@ -53,19 +55,25 @@
         </div>
         <div *ngIf="persona?.technicalDevices">
           <span class="area-heading">Technical Devices</span>
-          <p>{{ persona?.technicalDevices }}</p>
+          <div class="item-icon-card-container">
+            <app-icon-card *ngFor="let id of persona?.technicalDevices" type="TechnicalDevice" [id]="id"></app-icon-card>
+          </div>
         </div>
         <div *ngIf="persona?.brands">
           <span class="area-heading">Brands</span>
-          <p>{{ persona?.brands }}</p>
+          <div class="item-icon-card-container">
+            <app-icon-card *ngFor="let id of persona?.brands" type="Brand" [id]="id"></app-icon-card>
+          </div>
         </div>
         <div *ngIf="persona?.hobbiesInterest">
           <span class="area-heading">Hobbies</span>
-          <p>{{ persona?.hobbiesInterest }}</p>
+          <div class="item-icon-card-container">
+            <app-icon-card *ngFor="let id of persona?.hobbiesInterest" type="Hobby" [id]="id"></app-icon-card>
+          </div>
         </div>
-        <div *ngIf="persona">
+        <div *ngIf="persona?.personality">
           <span class="area-heading">Personality</span>
-          <p>{{ persona }}</p>
+          <app-personality-range *ngFor="let pc of personalityCriteria" [leftLabel]="pc.criteriaOne" [rightLabel]="pc.criteriaTwo" [value]="pc.value"></app-personality-range>
         </div>
       </div>
     </div>

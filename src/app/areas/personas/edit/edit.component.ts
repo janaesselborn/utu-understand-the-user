@@ -4,6 +4,7 @@ import {CdkDrag, CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular
 import {PersonalityCriteria} from '../../../shared/personality-criteria';
 import {DragAndDropIconItem} from '../../../shared/drag-and-drop-icon-item';
 import {Location} from '@angular/common';
+import {ItemsService} from '../../../shared/items.service';
 
 @Component({
     selector: 'app-edit',
@@ -21,6 +22,7 @@ export class EditComponent implements OnInit {
     selectedBrands = [];
     selectedTechnicalDevices = [];
     selectedHobbies = [];
+    allTechnicalDevices: DragAndDropIconItem[] = [];
 
     allStatus: string[] = [
         'Single',
@@ -44,12 +46,6 @@ export class EditComponent implements OnInit {
         'Creator',
         'Discoverer'
     ];
-    allTechnicalDevices: DragAndDropIconItem[] = [
-        new DragAndDropIconItem('TechnicalDevice', 'PC', 'desktop-outline'),
-        new DragAndDropIconItem('TechnicalDevice', 'Laptop', 'laptop-outline'),
-        new DragAndDropIconItem('TechnicalDevice', 'Smartphone', 'phone-portrait-outline'),
-        new DragAndDropIconItem('TechnicalDevice', 'Smartwatch', 'watch-outline'),
-    ];
     allBrands: DragAndDropIconItem[] = [
         new DragAndDropIconItem('Brand', 'Amazon', 'logo-amazon'),
         new DragAndDropIconItem('Brand', 'Apple', 'logo-apple'),
@@ -68,7 +64,7 @@ export class EditComponent implements OnInit {
     ];
     allAges: number[] = [];
     allHobbies: DragAndDropIconItem [] = [
-        new DragAndDropIconItem('Hobby', 'Americal Football', 'american-football-outline'),
+        new DragAndDropIconItem('Hobby', 'American Football', 'american-football-outline'),
         new DragAndDropIconItem('Hobby', 'Beer', 'beer-outline'),
         new DragAndDropIconItem('Hobby', 'Bicycle', 'bicycle-outline'),
         new DragAndDropIconItem('Hobby', 'Cafe', 'cafe-outline'),
@@ -111,7 +107,8 @@ export class EditComponent implements OnInit {
 
 
     constructor(
-        private location: Location
+        private location: Location,
+        private itemService: ItemsService
     ) {
     }
 
@@ -119,6 +116,17 @@ export class EditComponent implements OnInit {
         for (let i = 0; i <= 100; i++) {
             this.allAges.push(i);
         }
+
+        // Get technical Devices
+        const technicalDevicesRes = this.itemService.getTechnicalDeviceList();
+        technicalDevicesRes.snapshotChanges().subscribe(res => {
+            this.allTechnicalDevices = [];
+            res.forEach(item => {
+                const a = item.payload.toJSON();
+                a['$key'] = item.key;
+                this.allTechnicalDevices.push(a as DragAndDropIconItem);
+            });
+        });
     }
 
     goBack() {

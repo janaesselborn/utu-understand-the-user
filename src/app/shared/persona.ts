@@ -14,9 +14,10 @@ export class Persona {
     bio?: string;
     frustrations?: string;
     goals?: string;
-    technicalDevices?: DragAndDropIconItem[];
-    brands?: DragAndDropIconItem[];
-    hobbiesInterest?: DragAndDropIconItem[];
+    technicalDevices?: string[];
+    brands?: string[];
+    hobbiesInterest?: string[];
+    personality?: number[];
 
     constructor(
         name: string,
@@ -31,9 +32,10 @@ export class Persona {
         id?: string,
         frustrations?: string,
         goals?: string,
-        technicalDevices?: DragAndDropIconItem[],
-        brands?: DragAndDropIconItem[],
-        hobbiesInterest?: DragAndDropIconItem[],
+        technicalDevices?: string[],
+        brands?: string[],
+        hobbiesInterest?: string[],
+        personality?: number[]
     ) {
         this.name = name;
         this.image = image;
@@ -50,5 +52,6 @@ export class Persona {
         this.technicalDevices = technicalDevices;
         this.brands = brands;
         this.hobbiesInterest = hobbiesInterest;
+        this.personality = personality;
     }
 }

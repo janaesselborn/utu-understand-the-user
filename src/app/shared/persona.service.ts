@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular/fire/database';
+import {AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import {Observable} from 'rxjs';
 import {Persona} from './persona';
 
@@ -8,7 +8,6 @@ import {Persona} from './persona';
 })
 export class PersonaService {
   personaListRef: AngularFireList<any>;
-  personaObject: Observable<Persona>;
 
   constructor(private db: AngularFireDatabase) { }
 
@@ -20,6 +19,6 @@ export class PersonaService {
 
   // Get Persona by Id
   getPersonaById(id: string): Observable<Persona> {
-    return  this.db.object('/personas/' + id).valueChanges() as Observable<Persona>;
+    return this.db.object('/personas/' + id).valueChanges() as Observable<Persona>;
   }
 }

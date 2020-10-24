@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DragAndDropIconItem} from '../../../../shared/drag-and-drop-icon-item';
+import {ItemsService} from '../../../../shared/items.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-icon-card',
@@ -7,10 +9,24 @@ import {DragAndDropIconItem} from '../../../../shared/drag-and-drop-icon-item';
   styleUrls: ['./icon-card.component.scss'],
 })
 export class IconCardComponent implements OnInit {
-  @Input() item: DragAndDropIconItem;
+  item$: Observable<DragAndDropIconItem>;
+  @Input() type: 'TechnicalDevice' | 'Brand' | 'Hobby' ;
+  @Input() id: string;
 
-  constructor() { }
+  constructor(private itemsService: ItemsService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    switch (this.type) {
+      case 'TechnicalDevice':
+        this.item$ = this.itemsService.getTechnicalDeviceById(this.id);
+        break;
+      case 'Brand':
+        this.item$ = this.itemsService.getBrandById(this.id);
+        break;
+      case 'Hobby':
+        this.item$ = this.itemsService.getHobbyById(this.id);
+        break;
 
+    }
+  }
 }

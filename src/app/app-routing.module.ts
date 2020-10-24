@@ -6,6 +6,7 @@ import {FeatureVotingComponent} from './areas/feature-voting/feature-voting.comp
 import {SurveysComponent} from './areas/surveys/surveys.component';
 import {DetailComponent} from './areas/personas/detail/detail.component';
 import {EditComponent} from './areas/personas/edit/edit.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'area/surveys',
     component: SurveysComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
 ];
 

@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="custom-content">
+    <div class="user-information">
+      <div class="image-wrapper">
+        <img alt="Max Mustermann" src="assets/images/avatar_profile.jpg">
+      </div>
+      <h1>Max Mustermann</h1>
+      <p>max.mustermann@mail.de</p>
+    </div>
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Projects">
+        <div class="tab-inner-wrapper">
+          <mat-list>
+            <mat-list-item>Project A</mat-list-item>
+            <mat-list-item>Project B</mat-list-item>
+            <mat-list-item>Project C</mat-list-item>
+          </mat-list>
+        </div>
+      </mat-tab>
+      <mat-tab label="User Settings">
+        <div class="tab-inner-wrapper">
+          <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Username</mat-label>
+                <input matInput value="Max Mustermann" placeholder="Max Mustermann">
+              </mat-form-field>
+            </p>
+          <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" value="Password" placeholder="Password">
+              </mat-form-field>
+            </p>
+          <ion-button color="secondary" class="main-action-button" shape="round">Update Profile</ion-button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</ion-content>

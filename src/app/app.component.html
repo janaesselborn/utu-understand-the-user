@@ -5,12 +5,17 @@
                 <ion-menu-toggle class="sidebar-wrapper" auto-hide="false">
                     <div class="sidebar-top-wrapper">
                         <ion-img class="logo" src="../assets/logo/Logo.svg">UTU</ion-img>
-                        <ion-item class="project-selection">
-                            <ion-select interface="popover" [(ngModel)]="project.form">
-                                <ion-select-option *ngFor="let p of projects"
-                                                   [value]="p.title">{{ p.title }}</ion-select-option>
-                            </ion-select>
-                        </ion-item>
+                        <div class="project-selection-wrapper">
+                            <mat-form-field appearance="fill" class="project-selection">
+                                <mat-label>Project</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let p of projects" [value]="p.title">
+                                        {{ p.title }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
                         <ion-list id="project-specific-list">
                             <ion-item *ngFor="let p of appPages" [routerLink]="p.url" detail="false" lines="none" routerLinkActive="is-active">
                                 <ion-icon [ios]="p.icon" [md]="p.icon" slot="start"></ion-icon>

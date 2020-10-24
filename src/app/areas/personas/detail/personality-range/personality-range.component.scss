@@ -1,0 +1,18 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  grid-column-gap: 8px;
+  align-items: center;
+
+  .slider-label-left {
+    justify-self: end;
+  }
+
+  .slider-label-right {
+    justify-self: start;
+  }
+
+  mat-progress-bar {
+    height: 10px;
+  }
+}
