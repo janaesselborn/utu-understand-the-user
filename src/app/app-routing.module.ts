@@ -7,6 +7,7 @@ import {SurveysComponent} from './areas/surveys/surveys.component';
 import {DetailComponent} from './areas/personas/detail/detail.component';
 import {EditComponent} from './areas/personas/edit/edit.component';
 import {ProfileComponent} from './profile/profile.component';
+import {KnowHowComponent} from './know-how/know-how.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'knowhow',
+    component: KnowHowComponent
   },
 ];
 

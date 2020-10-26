@@ -1,0 +1,24 @@
+<ion-content>
+  <div class="custom-content">
+    <div class="header-bar">
+      <div class="page-heading">
+        <h1>Know-How</h1>
+      </div>
+    </div>
+    <div class="searchbar">
+      <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Search for ...">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel  *ngFor="let article of articles">
+        <mat-expansion-panel-header >
+          <app-article [article]="article"></app-article>
+        </mat-expansion-panel-header>
+        <p class="article-content">{{ article?.content }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</ion-content>

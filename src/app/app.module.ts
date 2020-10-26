@@ -47,6 +47,9 @@ import {VoteButtonComponent} from './areas/feature-voting/vote-button/vote-butto
 import {FeatureCommentComponent} from './areas/feature-voting/feature-comment/feature-comment.component';
 import {SpecialFeaturesComponent} from './areas/feature-voting/special-features/special-features.component';
 import {VotesComponent} from './areas/feature-voting/votes/votes.component';
+import {KnowHowComponent} from './know-how/know-how.component';
+import {MatIconModule} from '@angular/material/icon';
+import {ArticleComponent} from './know-how/article/article.component';
 
 @NgModule({
     declarations: [
@@ -65,7 +68,9 @@ import {VotesComponent} from './areas/feature-voting/votes/votes.component';
         VoteButtonComponent,
         FeatureCommentComponent,
         SpecialFeaturesComponent,
-        VotesComponent
+        VotesComponent,
+        KnowHowComponent,
+        ArticleComponent
     ],
   entryComponents: [],
     imports: [
@@ -94,7 +99,8 @@ import {VotesComponent} from './areas/feature-voting/votes/votes.component';
         MatProgressBarModule,
         MatTabsModule,
         MatListModule,
-        MatButtonModule
+        MatButtonModule,
+        MatIconModule
     ],
   providers: [
     StatusBar,
