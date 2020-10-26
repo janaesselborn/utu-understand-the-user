@@ -1,5 +1,65 @@
 <ion-content>
   <div class="custom-content">
-    <ion-title>Feature Voting List</ion-title>
+    <div class="header-bar">
+      <div class="page-heading">
+        <h1>Feature Voting</h1>
+        <ion-icon ios="information-circle-outline" md="information-circle-outline"></ion-icon>
+      </div>
+      <ion-button color="secondary" class="main-action-button" shape="round" (click)="openSidepage()">Create</ion-button>
+    </div>
+    <div class="special-features">
+      <app-special-features  *ngFor="let feature of specialFeatureVotings" [feature]="feature"></app-special-features>
+    </div>
+
+    <div class="feature-wrapper" *ngFor="let feature of standardFeatureVotings">
+      <app-feature-item [featureVoting]="feature" (click)="openFeatureSidepage(feature)"></app-feature-item>
+      <app-vote-button></app-vote-button>
+    </div>
+  </div>
+  <div *ngIf="sidepageVisible" class="side-page">
+    <ion-icon class="close-icon" name="close-circle-outline" (click)="closeSidepage()"></ion-icon>
+    <h2>Create feature request</h2>
+    <p>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput rows="10" placeholder="Description"></textarea>
+      </mat-form-field>
+    </p>
+    <ion-button color="secondary" class="main-action-button" shape="round" (click)="closeSidepage()">Save</ion-button>
+    <ion-button color="primary" class="main-action-button" shape="round" (click)="closeSidepage()">Cancel</ion-button>
+  </div>
+  <div *ngIf="featureDetailVisible" class="side-page">
+    <ion-icon class="close-icon" name="close-circle-outline" (click)="closeFeatureSidepage()"></ion-icon>
+    <h2>{{ detailFeature?.title }}</h2>
+    <div class="voting-area">
+      <div class="votes">
+        <p class="votes-number">{{ detailFeature?.votes }}</p>
+        <p class="votes-label">Votes</p>
+      </div>
+      <app-vote-button></app-vote-button>
+    </div>
+    <p class="area-heading">Description</p>
+    <p>{{ detailFeature?.description }}</p>
+    <div>
+      <p class="area-heading">Comments</p>
+      <div class="comments-list" *ngIf="detailFeature?.comments">
+        <app-feature-comment [comment]="detailFeature?.comments[0]"></app-feature-comment>
+        <app-feature-comment [comment]="detailFeature?.comments[1]"></app-feature-comment>
+      </div>
+      <p>
+        <mat-form-field class="full-width write-comment" appearance="fill">
+          <mat-label>Write a comment</mat-label>
+          <textarea matInput rows="2" placeholder="Write a comment..."></textarea>
+        </mat-form-field>
+      </p>
+      <ion-button color="secondary" class="main-action-button comment-button" shape="round">Comment</ion-button>
+    </div>
   </div>
 </ion-content>
+<div *ngIf="sidepageVisible || featureDetailVisible" class="overlay"></div>

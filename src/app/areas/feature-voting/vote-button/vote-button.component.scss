@@ -1,0 +1,19 @@
+@import "src/theme/variables";
+
+.vote-action {
+  button {
+    background: var(--ion-color-primary);
+    min-width: 98px;
+  }
+
+  .voted {
+    background: var(--ion-color-primary-contrast);
+    color: var(--ion-color-secondary);
+
+    ion-icon {
+      width: 20px;
+      height: 20px;
+      padding-right: 8px;
+    }
+  }
+}

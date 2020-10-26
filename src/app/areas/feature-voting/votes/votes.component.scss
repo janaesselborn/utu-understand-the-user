@@ -1,0 +1,18 @@
+.votes-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .vote-counter {
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+
+  .vote-counter-label {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--ion-color-gray-1);
+  }
+}

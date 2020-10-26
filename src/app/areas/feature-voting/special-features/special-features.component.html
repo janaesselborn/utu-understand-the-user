@@ -1,0 +1,15 @@
+<div class="special-feature-wrapper">
+  <div class="image-wrapper" [style]="'background-image: url(' + feature?.image + ')'">
+  </div>
+  <div class="information-wrapper">
+    <app-votes [votes]="feature?.votes"></app-votes>
+    <div>
+    <h3>{{ feature?.title }}</h3>
+      <div class="feature-description">
+        <span *ngIf="feature?.description.length > 150">{{ (feature?.description).substr(0, 150) }}...</span>
+        <span *ngIf="feature?.description.length <= 150">{{ feature?.description }}</span>
+      </div>
+  </div>
+    <app-vote-button></app-vote-button>
+  </div>
+</div>

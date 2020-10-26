@@ -1,0 +1,11 @@
+<div class="feature-item-wrapper">
+  <app-votes [votes]="featureVoting?.votes"></app-votes>
+  <div class="feature-information">
+    <h3>{{ featureVoting?.title }}</h3>
+    <div class="feature-description">
+      <span *ngIf="featureVoting?.description.length > 150">{{ (featureVoting?.description).substr(0, 150) }}...</span>
+      <span *ngIf="featureVoting?.description.length <= 150">{{ featureVoting?.description }}</span>
+    </div>
+  </div>
+</div>
+

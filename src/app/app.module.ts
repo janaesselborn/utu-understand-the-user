@@ -40,6 +40,13 @@ import {PersonalityRangeComponent} from './areas/personas/detail/personality-ran
 import {ProfileComponent} from './profile/profile.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
+import {FeatureItemComponent} from './areas/feature-voting/feature-item/feature-item.component';
+import {FeatureVotingComponent} from './areas/feature-voting/feature-voting.component';
+import {MatButtonModule} from '@angular/material/button';
+import {VoteButtonComponent} from './areas/feature-voting/vote-button/vote-button.component';
+import {FeatureCommentComponent} from './areas/feature-voting/feature-comment/feature-comment.component';
+import {SpecialFeaturesComponent} from './areas/feature-voting/special-features/special-features.component';
+import {VotesComponent} from './areas/feature-voting/votes/votes.component';
 
 @NgModule({
     declarations: [
@@ -52,7 +59,13 @@ import {MatListModule} from '@angular/material/list';
         SliderWithTextOnSideComponent,
         PersonaCardComponent,
         PersonalityRangeComponent,
-        ProfileComponent
+        ProfileComponent,
+        FeatureItemComponent,
+        FeatureVotingComponent,
+        VoteButtonComponent,
+        FeatureCommentComponent,
+        SpecialFeaturesComponent,
+        VotesComponent
     ],
   entryComponents: [],
     imports: [
@@ -80,7 +93,8 @@ import {MatListModule} from '@angular/material/list';
         AngularFireStorageModule,
         MatProgressBarModule,
         MatTabsModule,
-        MatListModule
+        MatListModule,
+        MatButtonModule
     ],
   providers: [
     StatusBar,

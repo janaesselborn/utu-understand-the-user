@@ -1,0 +1,4 @@
+<div class="vote-action">
+  <button *ngIf="!voted" mat-flat-button color="primary" (click)="vote()">Vote</button>
+  <button *ngIf="voted" mat-flat-button color="primary" class="voted"><ion-icon name="checkmark-outline"></ion-icon>Voted</button>
+</div>

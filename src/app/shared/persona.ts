@@ -1,5 +1,4 @@
 import {Archetype} from './archetype';
-import {DragAndDropIconItem} from './drag-and-drop-icon-item';
 
 export class Persona {
     name: string;

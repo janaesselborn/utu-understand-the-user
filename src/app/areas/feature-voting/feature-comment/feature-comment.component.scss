@@ -1,0 +1,17 @@
+@import "src/theme/variables";
+
+.comment-wrapper {
+  padding: 12px;
+  border-radius: 4px;
+  background: var(--ion-color-primary-contrast);
+  margin-bottom: 8px;
+
+  p {
+    margin-bottom: 4px;
+  }
+
+  .commentator {
+    color: var(--ion-color-primary);
+    font-weight: bold;
+  }
+}
