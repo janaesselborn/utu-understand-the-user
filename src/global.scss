@@ -28,3 +28,9 @@
 /* Custom CSS Files */
 @import "theme/custom.scss";
 @import "theme/personas.scss";
+
+:root {
+  .mat-step-header .mat-step-icon-selected {
+    background-color: var(--ion-color-primary) !important;
+  }
+}

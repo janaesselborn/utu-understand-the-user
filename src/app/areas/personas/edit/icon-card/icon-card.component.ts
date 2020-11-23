@@ -12,6 +12,7 @@ export class IconCardComponent implements OnInit {
   item$: Observable<DragAndDropIconItem>;
   @Input() type: 'TechnicalDevice' | 'Brand' | 'Hobby' ;
   @Input() id: string;
+  @Input() icon?: string;
 
   constructor(private itemsService: ItemsService) { }
 

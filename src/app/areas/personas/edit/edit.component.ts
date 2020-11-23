@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CdkDrag, CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {PersonalityCriteria} from '../../../shared/personality-criteria';
 import {DragAndDropIconItem} from '../../../shared/drag-and-drop-icon-item';
 import {Location} from '@angular/common';
 import {ItemsService} from '../../../shared/items.service';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-edit',
@@ -23,6 +24,9 @@ export class EditComponent implements OnInit {
     selectedTechnicalDevices = [];
     selectedHobbies = [];
     allTechnicalDevices: DragAndDropIconItem[] = [];
+    isLinear = false;
+    firstFormGroup: FormGroup;
+    secondFormGroup: FormGroup;
 
     allStatus: string[] = [
         'Single',
@@ -108,11 +112,19 @@ export class EditComponent implements OnInit {
 
     constructor(
         private location: Location,
-        private itemService: ItemsService
+        private itemService: ItemsService,
+        private formBuilder: FormBuilder
     ) {
     }
 
     ngOnInit() {
+        this.firstFormGroup = this.formBuilder.group({
+            firstCtrl: ['', Validators.required]
+        });
+        this.secondFormGroup = this.formBuilder.group({
+            secondCtrl: ['', Validators.required]
+        });
+
         for (let i = 0; i <= 100; i++) {
             this.allAges.push(i);
         }

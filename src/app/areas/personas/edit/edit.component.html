@@ -3,6 +3,7 @@
         <!-- MAIN CONTENT -->
         <section class="grid-item main">
             <ion-icon name="arrow-back-outline" class="go-back" (click)="goBack()"></ion-icon>
+            <app-drop-zone></app-drop-zone>
             <form class="persona-creation-form">
                 <mat-form-field class="full-width form-field-name" appearance="fill">
                     <mat-label>Name</mat-label>
@@ -14,158 +15,151 @@
                         Name is <strong>required</strong>
                     </mat-error>
                 </mat-form-field>
-                <div class="grid-container-basic-info">
-                    <div>
-                        <mat-form-field appearance="fill" class="full-width">
-                            <mat-label>Age</mat-label>
-                            <mat-select [(ngModel)]="ageSelectedValue" name="age">
-                                <mat-option *ngFor="let age of allAges" [value]="age">
-                                    {{ age }}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <app-location-finder></app-location-finder>
-                        <mat-form-field appearance="fill" class="full-width">
-                            <mat-label>Jobtitle</mat-label>
-                            <input matInput placeholder="Jobtitle"/>
-                        </mat-form-field>
-                        <mat-form-field appearance="fill" class="full-width">
-                            <mat-label>Status</mat-label>
-                            <mat-select [(ngModel)]="statusSelectedValue" name="status">
-                                <mat-option *ngFor="let status of allStatus" [value]="status">
-                                    {{status}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field appearance="fill" class="full-width">
-                            <mat-label>Archetype</mat-label>
-                            <mat-select [(ngModel)]="archetypeSelectedValue" name="archetype">
-                                <mat-option *ngFor="let archetype of allArchetypes" [value]="archetype">
-                                    {{archetype}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field class="full-width" appearance="fill">
-                            <mat-label>Quote</mat-label>
-                            <textarea matInput placeholder="Quote of Person about targets"></textarea>
-                        </mat-form-field>
-                    </div>
-                    <div class="image-wrapper" style="max-width: 100%; height: 300px">
-                        <img style="max-height: 100%;" [alt]="'Persona'" [src]="'/assets/images/persona_baerbel_lagermann.jpg'">
-                    </div>
-                </div>
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>Biografie</mat-label>
-                    <textarea matInput placeholder="Wie ist der Tagesablauf der Person?"></textarea>
-                </mat-form-field>
-                <div class="grid-container-basic-info">
-                    <mat-form-field class="full-width" appearance="fill">
-                        <mat-label>Goals</mat-label>
-                        <textarea matInput placeholder="Goals..."></textarea>
-                    </mat-form-field>
-                    <mat-form-field class="full-width" appearance="fill">
-                        <mat-label>Frustrations</mat-label>
-                        <textarea matInput placeholder="Frustrations..."></textarea>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <h2 class="small-heading">Personality</h2>
-                    <app-slider-with-text-on-side
-                            *ngFor="let item of personalityCriteria"
-                            [leftLabelSlider]="item?.criteriaOne"
-                            [rightLabelSlider]="item.criteriaTwo"
-                            [valueSlider]="item?.value"
-                    ></app-slider-with-text-on-side>
-                </div>
-                <div class="grid-container-specific-infos">
-                    <div class="technical-devices-container">
-                        <h2 class="small-heading">Technical devices used</h2>
-                        <div
-                                id="selectedTechnicalDevices"
-                                cdkDropList
-                                [cdkDropListData]="selectedTechnicalDevices"
-                                cdkDropListConnectedTo="allTechnicalDevices"
-                                class="technical-device-list"
-                                cdkDropListOrientation="horizontal"
-                                (cdkDropListDropped)="drop($event)"
-                                [cdkDropListEnterPredicate]="isTechnicalDevice">
-                            <div
-                                    class="drag-and-drop-box"
-                                    *ngFor="let technicalDevice of selectedTechnicalDevices"
-                                    cdkDrag
-                                    [cdkDragData]="technicalDevice"
-                            >
-                                <app-icon-card [item]="technicalDevice"></app-icon-card>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="brands-container">
-                        <h2 class="small-heading">Brands</h2>
-                        <div
-                                id="selectedBrands"
-                                cdkDropList
-                                [cdkDropListData]="selectedBrands"
-                                cdkDropListConnectedTo="allBrands"
-                                class="brands-list"
-                                cdkDropListOrientation="horizontal"
-                                (cdkDropListDropped)="drop($event)"
-                                [cdkDropListEnterPredicate]="isBrand">
-                            <div
-                                    class="drag-and-drop-box"
-                                    *ngFor="let brand of selectedBrands"
-                                    cdkDrag
-                                    [cdkDragData]="brand"
-                            >
-                                <app-icon-card [item]="brand"></app-icon-card>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-container-specific-infos">
-                    <div class="technical-devices-container">
-                        <h2 class="small-heading">Hobbies and interests</h2>
-                        <div
-                                id="selectedHobbies"
-                                cdkDropList
-                                [cdkDropListData]="selectedHobbies"
-                                cdkDropListConnectedTo="allHobbies"
-                                class="technical-device-list"
-                                cdkDropListOrientation="horizontal"
-                                (cdkDropListDropped)="drop($event)"
-                                [cdkDropListEnterPredicate]="isHobby">
-                            <div
-                                    class="drag-and-drop-box"
-                                    *ngFor="let hobby of selectedHobbies"
-                                    cdkDrag
-                                    [cdkDragData]="hobby"
-                            >
-                                <app-icon-card [item]="hobby"></app-icon-card>
-                            </div>
-                        </div>
-                    </div>
-<!--                    <div class="brands-container">-->
-<!--                        <h2 class="small-heading">Brands</h2>-->
-<!--                        <div-->
-<!--                                id="xxx"-->
-<!--                                cdkDropList-->
-<!--                                [cdkDropListData]="selectedBrands"-->
-<!--                                cdkDropListConnectedTo="allBrands"-->
-<!--                                class="brands-list"-->
-<!--                                cdkDropListOrientation="horizontal"-->
-<!--                                (cdkDropListDropped)="drop($event)"-->
-<!--                                [cdkDropListEnterPredicate]="isBrand">-->
-<!--                            <div-->
-<!--                                    class="drag-and-drop-box"-->
-<!--                                    *ngFor="let brand of selectedBrands"-->
-<!--                                    cdkDrag-->
-<!--                                    [cdkDragData]="brand"-->
-<!--                            >-->
-<!--                                <app-icon-card [item]="brand"></app-icon-card>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                </div>
             </form>
+
+
+
+                <mat-vertical-stepper [linear]="isLinear" #stepper>
+                    <mat-step [stepControl]="firstFormGroup">
+<!--                        <form [formGroup]="firstFormGroup">-->
+                            <ng-template matStepLabel>General</ng-template>
+                            <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Age</mat-label>
+                                <mat-select [(ngModel)]="ageSelectedValue" name="age">
+                                    <mat-option *ngFor="let age of allAges" [value]="age">
+                                        {{ age }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <app-location-finder></app-location-finder>
+                            <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Jobtitle</mat-label>
+                                <input matInput placeholder="Jobtitle"/>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Status</mat-label>
+                                <mat-select [(ngModel)]="statusSelectedValue" name="status">
+                                    <mat-option *ngFor="let status of allStatus" [value]="status">
+                                        {{status}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Quote</mat-label>
+                                <textarea matInput placeholder="Quote of Person about targets"></textarea>
+                            </mat-form-field>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Biografie</mat-label>
+                                <textarea matInput placeholder="Wie ist der Tagesablauf der Person?"></textarea>
+                            </mat-form-field>
+                            <div>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+<!--                        </form>-->
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup">
+<!--                        <form [formGroup]="secondFormGroup">-->
+                            <ng-template matStepLabel>Personality</ng-template>
+                            <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Archetype</mat-label>
+                                <mat-select [(ngModel)]="archetypeSelectedValue" name="archetype">
+                                    <mat-option *ngFor="let archetype of allArchetypes" [value]="archetype">
+                                        {{archetype}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Goals</mat-label>
+                                <textarea matInput placeholder="Goals..."></textarea>
+                            </mat-form-field>
+                            <mat-form-field class="full-width" appearance="fill">
+                                <mat-label>Frustrations</mat-label>
+                                <textarea matInput placeholder="Frustrations..."></textarea>
+                            </mat-form-field>
+                            <app-slider-with-text-on-side
+                                    *ngFor="let item of personalityCriteria"
+                                    [leftLabelSlider]="item?.criteriaOne"
+                                    [rightLabelSlider]="item.criteriaTwo"
+                                    [valueSlider]="item?.value"
+                            ></app-slider-with-text-on-side>
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+<!--                        </form>-->
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup">
+                        <ng-template matStepLabel>Skills & Interests</ng-template>
+                        <div class="technical-devices-container">
+                            <h2 class="small-heading">Technical devices used</h2>
+                            <div
+                                    id="selectedTechnicalDevices"
+                                    cdkDropList
+                                    [cdkDropListData]="selectedTechnicalDevices"
+                                    cdkDropListConnectedTo="allTechnicalDevices"
+                                    class="technical-device-list"
+                                    cdkDropListOrientation="horizontal"
+                                    (cdkDropListDropped)="drop($event)"
+                                    [cdkDropListEnterPredicate]="isTechnicalDevice">
+                                <div
+                                        class="drag-and-drop-box"
+                                        *ngFor="let technicalDevice of selectedTechnicalDevices"
+                                        cdkDrag
+                                        [cdkDragData]="technicalDevice"
+                                >
+                                    <app-icon-card [icon]="technicalDevice.icon"></app-icon-card>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="brands-container">
+                            <h2 class="small-heading">Brands</h2>
+                            <div
+                                    id="selectedBrands"
+                                    cdkDropList
+                                    [cdkDropListData]="selectedBrands"
+                                    cdkDropListConnectedTo="allBrands"
+                                    class="brands-list"
+                                    cdkDropListOrientation="horizontal"
+                                    (cdkDropListDropped)="drop($event)"
+                                    [cdkDropListEnterPredicate]="isBrand">
+                                <div
+                                        class="drag-and-drop-box"
+                                        *ngFor="let brand of selectedBrands"
+                                        cdkDrag
+                                        [cdkDragData]="brand"
+                                >
+                                    <app-icon-card [icon]="brand.icon"></app-icon-card>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="technical-devices-container">
+                            <h2 class="small-heading">Hobbies and interests</h2>
+                            <div
+                                    id="selectedHobbies"
+                                    cdkDropList
+                                    [cdkDropListData]="selectedHobbies"
+                                    cdkDropListConnectedTo="allHobbies"
+                                    class="technical-device-list"
+                                    cdkDropListOrientation="horizontal"
+                                    (cdkDropListDropped)="drop($event)"
+                                    [cdkDropListEnterPredicate]="isHobby">
+                                <div
+                                        class="drag-and-drop-box"
+                                        *ngFor="let hobby of selectedHobbies"
+                                        cdkDrag
+                                        [cdkDragData]="hobby"
+                                >
+                                    <app-icon-card [icon]="hobby.icon"></app-icon-card>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button>Save</button>
+                        </div>
+                    </mat-step>
+                </mat-vertical-stepper>
         </section>
 
         <!-- SIDEBAR -->
@@ -192,7 +186,7 @@
                                     *ngFor="let technicalDevice of allTechnicalDevices"
                                     [cdkDragData]="technicalDevice"
                                     cdkDrag>
-                                <app-icon-card [item]="technicalDevice"></app-icon-card>
+                                <app-icon-card [icon]="technicalDevice.icon"></app-icon-card>
                             </div>
                         </div>
                     </div>
@@ -218,7 +212,7 @@
                                     *ngFor="let brand of allBrands"
                                     [cdkDragData]="brand"
                                     cdkDrag>
-                                <app-icon-card [item]="brand"></app-icon-card>
+                                <app-icon-card [icon]="brand.icon"></app-icon-card>
                             </div>
                         </div>
                     </div>
@@ -244,7 +238,7 @@
                                     *ngFor="let hobby of allHobbies"
                                     [cdkDragData]="hobby"
                                     cdkDrag>
-                                <app-icon-card [item]="hobby"></app-icon-card>
+                                <app-icon-card [icon]="hobby.icon"></app-icon-card>
                             </div>
                         </div>
                     </div>

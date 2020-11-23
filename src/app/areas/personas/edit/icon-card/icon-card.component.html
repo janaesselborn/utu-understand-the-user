@@ -1,3 +1,7 @@
-<div class="icon-card" *ngIf="item$ | async as item">
+<div class="icon-card" *ngIf="id && item$ | async as item">
   <ion-icon [ios]="item?.icon" [md]="item?.icon"></ion-icon>
+</div>
+
+<div class="icon-card" *ngIf="icon && !id">
+  <ion-icon [ios]="icon" [md]="icon"></ion-icon>
 </div>

@@ -50,6 +50,9 @@ import {VotesComponent} from './areas/feature-voting/votes/votes.component';
 import {KnowHowComponent} from './know-how/know-how.component';
 import {MatIconModule} from '@angular/material/icon';
 import {ArticleComponent} from './know-how/article/article.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {DropZoneComponent} from './areas/personas/edit/drop-zone/drop-zone.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
     declarations: [
@@ -70,7 +73,8 @@ import {ArticleComponent} from './know-how/article/article.component';
         SpecialFeaturesComponent,
         VotesComponent,
         KnowHowComponent,
-        ArticleComponent
+        ArticleComponent,
+        DropZoneComponent
     ],
   entryComponents: [],
     imports: [
@@ -100,7 +104,9 @@ import {ArticleComponent} from './know-how/article/article.component';
         MatTabsModule,
         MatListModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        MatTooltipModule,
+        MatStepperModule
     ],
   providers: [
     StatusBar,

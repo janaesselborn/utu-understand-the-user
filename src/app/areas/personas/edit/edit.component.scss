@@ -11,10 +11,8 @@
     padding: 1rem;
     overflow-y: scroll;
 
-    .grid-container-basic-info, .grid-container-specific-infos {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-column-gap: 20px;
+    .persona-creation-form {
+      margin-top: 20px;
     }
 
     .full-width {
@@ -27,7 +25,7 @@
       input {
         font-size: 1.5rem;
         font-weight: bold;
-        color: var(--ion-color-secondary);
+        color: var(--ion-color-primary);
       }
     }
   }
@@ -102,4 +100,5 @@
   //flex-grow: 1;
   flex-basis: 0;
 }
+
 
